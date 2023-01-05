@@ -12,6 +12,10 @@ export const Pagination = styled.div`
     font-size: 3rem;
     cursor: pointer;
     color: #97a5c8;
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 
   .pages {

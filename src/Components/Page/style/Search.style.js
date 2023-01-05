@@ -10,6 +10,7 @@ export const Search = styled.div`
 
   label {
     width: 50%;
+    padding-left: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,20 +37,19 @@ export const Search = styled.div`
     justify-content: space-around;
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 0.5rem;
     color: #a2a7c1;
 
     svg {
       font-size: 1.2rem;
       cursor: pointer;
-      transform: translateY(3px);
       transition: 0.3s linear;
 
       &:first-child {
-        color: ${(props) => (props.isList ? "#698aff" : "#97a5c8")};
+        color: ${(props) => (props.tableView ? "#698aff" : "#97a5c8")};
       }
       &:last-child {
-        color: ${(props) => (props.isList ? "#97a5c8" : "#698aff")};
+        color: ${(props) => (props.tableView ? "#97a5c8" : "#698aff")};
       }
     }
   }

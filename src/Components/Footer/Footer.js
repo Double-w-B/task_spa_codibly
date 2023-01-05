@@ -3,7 +3,7 @@ import StyledFooter from "./style";
 
 const Footer = () => {
   return (
-    <StyledFooter>
+    <StyledFooter className="no-select">
       <p>
         made by{" "}
         <a
