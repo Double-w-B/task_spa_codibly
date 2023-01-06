@@ -3,49 +3,122 @@ import styled from "styled-components";
 export const Color = styled.div`
   width: 380px;
   height: 450px;
-  border-radius: 4px;
+  padding: 0 1rem;
+  border-radius: 8px;
   visibility: ${(props) => (props.showModal ? "visible" : "hidden")};
   opacity: ${(props) => (props.showModal ? "1" : "0")};
   z-index: ${(props) => (props.showModal ? "10" : "-10")};
-  background-color: #c3c3c3;
+  position: absolute;
+  top: ${(props) => (props.showModal ? "50%" : "45%")};
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  transition: 0.3s linear;
 
   header {
     width: 100%;
     height: 15%;
     border-radius: 4px 4px 0 0;
-    background-color: #fff;
     position: relative;
     display: grid;
     align-items: center;
+
+    .modal__button-close {
+      width: 47.5px;
+      height: 100%;
+      display: grid;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      svg {
+        font-size: 1.6rem;
+        color: var(--light-blue);
+        cursor: pointer;
+        transition: 0.3s linear;
+
+        &:active {
+          transform: scale(0.8);
+        }
+      }
+    }
 
     p {
       font-size: 1.3rem;
       text-transform: capitalize;
       text-align: center;
+      color: var(--light-blue);
     }
+  }
 
-    svg {
-      font-size: 1.5rem;
-      position: absolute;
-      top: 50%;
-      left: 1rem;
-      transform: translateY(-50%);
+  .modal__color {
+    width: 100%;
+    height: 250px;
+    background-color: ${(props) => props.color};
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: relative;
+
+    p {
+      transition: 0.2s linear;
+
+      &:first-of-type {
+        font-size: 2rem;
+        text-transform: capitalize;
+        color: #fff;
+      }
+
+      &:nth-child(2) {
+        font-size: 1.4rem;
+        margin-top: 1rem;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: 0.15s linear;
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+
+      &:last-of-type {
+        color: rgba(255, 255, 255, 0.5);
+        opacity: ${(props) => (props.isCopied ? "1" : "0")};
+        visibility: ${(props) => (props.isCopied ? "visible" : "hidden")};
+        position: absolute;
+        bottom: 0.5rem;
+        left: 50%;
+        transform: translate(-50%);
+      }
     }
   }
 
   .modal__data {
     width: 100%;
-    height: 85%;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    height: calc(100% - 15% - 250px);
+    padding: 1rem 0 1rem 0.5rem;
+    position: relative;
 
-    div {
-      width: 100%;
-      height: calc(100% / 5.5);
-      border-radius: 4px;
-      background-color: tomato;
+    p {
+      &:first-of-type {
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        color: #000;
+      }
+
+      &:last-of-type {
+        font-size: 0.8rem;
+        color: var(--light-grey);
+        position: absolute;
+        right: 0;
+        bottom: 1rem;
+      }
     }
   }
 `;

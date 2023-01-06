@@ -1,4 +1,5 @@
 import React from "react";
+import StyledHomePage from "./style";
 import { useDispatch } from "react-redux";
 import * as appSlice from "../../redux/features/appSlice";
 
@@ -14,11 +15,11 @@ const SingleColor = (props) => {
   };
 
   return (
-    <div style={{ backgroundColor: color }} onClick={handleColorClick}>
+    <StyledHomePage.SingleColor onClick={handleColorClick} color={color}>
       <p>{name}</p>
       <p>{year}</p>
       <p className="colorID">ID: {id}</p>
-    </div>
+    </StyledHomePage.SingleColor>
   );
 };
 

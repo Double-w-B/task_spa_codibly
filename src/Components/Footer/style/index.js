@@ -7,10 +7,10 @@ const StyledFooter = styled.footer`
   place-items: center;
 
   p {
-    color: #a2a7c1;
+    color: var(--light-grey);
 
     a {
-      color: #698aff;
+      color: var(--primary-blue);
     }
   }
 `;

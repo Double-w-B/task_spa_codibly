@@ -11,7 +11,7 @@ export const Pagination = styled.div`
   svg {
     font-size: 3rem;
     cursor: pointer;
-    color: #97a5c8;
+    color: var(--light-blue);
 
     &:active {
       transform: scale(0.98);
@@ -29,18 +29,18 @@ export const Pagination = styled.div`
     .page {
       width: 38px;
       height: 38px;
-      border: 2px solid #a2a7c1;
+      border: 2px solid var(--light-grey);
       border-radius: 50%;
       display: grid;
       place-items: center;
       cursor: pointer;
       transition: 0.3s linear;
-      color: #a2a7c1;
+      color: var(--light-grey);
 
       &.active {
         color: #fff;
-        background-color: #698aff;
-        border-radius: 4px;
+        background-color: var(--primary-blue);
+        border-radius: var(--border-radius);
         border: none;
       }
 

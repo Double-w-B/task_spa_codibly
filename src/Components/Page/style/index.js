@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Search } from "./Search.style";
 import { Table } from "./Table.style";
 import { Pagination } from "./Pagination.style";
+import { SingleColor } from "./SingleColor.style";
 
 const StyledHomePage = styled.section`
   width: 50vw;
@@ -12,6 +13,7 @@ const StyledHomePage = styled.section`
 
 StyledHomePage.Search = Search;
 StyledHomePage.Table = Table;
+StyledHomePage.SingleColor = SingleColor;
 StyledHomePage.Pagination = Pagination;
 
 export default StyledHomePage;

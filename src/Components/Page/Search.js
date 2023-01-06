@@ -24,7 +24,6 @@ const Search = () => {
 
   const handleInputChange = (e) => {
     const value = e.target.value.replace(/[^0-9.]/g, "");
-    console.log(value);
     dispatch(setSearchQuery(value));
   };
 

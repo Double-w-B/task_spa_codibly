@@ -9,24 +9,52 @@ const ColorModal = () => {
   const { isColorModal, colorModalData } = useSelector((store) => store.app);
 
   const { id, name, year, color, pantone_value } = colorModalData;
+  const [isCopied, setIsCopied] = React.useState(false);
 
-  const handleClick = () => {
+  const initialState = {
+    showModal: isColorModal,
+    color,
+    isCopied,
+  };
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsCopied(false);
+    }, 750);
+    return () => clearTimeout(timer);
+  }, [isCopied]);
+
+  const handleCloseButton = () => {
     dispatch(appSlice.setIsModal(false));
     dispatch(appSlice.setIsColorModal(false));
   };
+  const handleHEXClick = () => {
+    navigator.clipboard.writeText(color);
+    setIsCopied(true);
+  };
 
   return (
-    <StyledModalOverlay.Color showModal={isColorModal}>
+    <StyledModalOverlay.Color {...initialState}>
       <header>
-        <SlClose onClick={handleClick} />
+        <div className="modal__button-close">
+          <SlClose onClick={handleCloseButton} />
+        </div>
         <p>quick view</p>
       </header>
+
+      <div className="modal__color">
+        <p>{name}</p>
+        <p onClick={handleHEXClick}>{color}</p>
+        <p>copied!</p>
+      </div>
+
       <div className="modal__data">
-        <div>{name}</div>
-        <div>Color: {color}</div>
-        <div>Pantone: {pantone_value}</div>
-        <div>Year: {year}</div>
-        <div>ID: {id}</div>
+        <p>
+          pantone<sup>&#174;</sup>
+        </p>
+        <p>{pantone_value}</p>
+        <p>{year}</p>
+        <p>ID: {id}</p>
       </div>
     </StyledModalOverlay.Color>
   );

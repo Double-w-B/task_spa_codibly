@@ -12,7 +12,7 @@ const StyledModalOverlay = styled.div`
   visibility: ${(props) => (props.showModal ? "visible" : "hidden")};
   opacity: ${(props) => (props.showModal ? "1" : "0")};
   z-index: ${(props) => (props.showModal ? "10" : "-10")};
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.7);
 `;
 
 StyledModalOverlay.Color = Color;

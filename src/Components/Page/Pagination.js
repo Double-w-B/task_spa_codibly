@@ -1,7 +1,7 @@
 import React from "react";
 import StyledHomePage from "./style";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage } from "../../redux/features/appSlice";
+import * as appSlice from "../../redux/features/appSlice";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 
 const Pagination = () => {
@@ -14,12 +14,17 @@ const Pagination = () => {
 
   const handlePrevButton = () => {
     if (currentPage === 1) return;
-    dispatch(setCurrentPage(currentPage - 1));
+    dispatch(appSlice.setCurrentPage(currentPage - 1));
   };
 
   const handleNextButton = () => {
     if (currentPage === colorsPages.length) return;
-    dispatch(setCurrentPage(currentPage + 1));
+    dispatch(appSlice.setCurrentPage(currentPage + 1));
+  };
+
+  const handlePageClick = (index) => {
+    dispatch(appSlice.setSearchQuery(""));
+    dispatch(appSlice.setCurrentPage(index + 1));
   };
 
   React.useEffect(() => {
@@ -47,7 +52,7 @@ const Pagination = () => {
             <div
               key={index}
               className={`page ${setActive()}`}
-              onClick={() => dispatch(setCurrentPage(index + 1))}
+              onClick={() => handlePageClick(index)}
             >
               {index + 1}
             </div>

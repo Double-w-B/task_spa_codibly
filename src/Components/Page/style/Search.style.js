@@ -7,6 +7,8 @@ export const Search = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  border-radius: 0 0 4px 4px;
 
   label {
     width: 50%;
@@ -20,25 +22,25 @@ export const Search = styled.div`
 
     input {
       width: 75%;
-      margin-top: 1rem;
-      margin-left: 25%;
-      border: 2px solid #a2a7c1;
-      border-radius: 4px;
+      margin: 1rem 0 0 25%;
+      padding: 0.2rem 0.5rem;
+      border: 2px solid var(--primary-blue);
+      border-radius: var(--border-radius);
       outline: none;
-      padding-left: 0.5rem;
+      color: var(--light-blue);
     }
   }
 
   .icons {
     width: 80px;
-    height: 50%;
+    height: 55%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     position: absolute;
     bottom: 0;
     right: 0.5rem;
-    color: #a2a7c1;
+    color: var(--light-grey);
 
     svg {
       font-size: 1.2rem;
@@ -46,10 +48,12 @@ export const Search = styled.div`
       transition: 0.3s linear;
 
       &:first-child {
-        color: ${(props) => (props.tableView ? "#698aff" : "#97a5c8")};
+        color: ${(props) =>
+          props.tableView ? "var(--primary-blue)" : "var(--light-blue)"};
       }
       &:last-child {
-        color: ${(props) => (props.tableView ? "#97a5c8" : "#698aff")};
+        color: ${(props) =>
+          props.tableView ? "var(--light-blue)" : "var(--primary-blue)"};
       }
     }
   }

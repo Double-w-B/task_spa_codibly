@@ -10,7 +10,7 @@ const StyledError = styled.section`
   p {
     margin: 1rem 0;
     font-size: 1.5rem;
-    color: #a2a7c1;
+    color: var(--light-grey);
   }
 
   .img__container {
@@ -28,11 +28,11 @@ const StyledError = styled.section`
     padding: 0.5rem;
     outline: none;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     color: #fff;
     cursor: pointer;
     transition: 0.3s linear;
-    background-color: #698aff;
+    background-color: var(--primary-blue);
 
     &:active {
       transform: scale(0.85);

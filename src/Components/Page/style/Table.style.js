@@ -3,13 +3,11 @@ import styled from "styled-components";
 export const Table = styled.article`
   width: 100%;
   height: 78%;
-  /* border: 2px solid #a2a7c1; */
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   padding: 1rem 0.5rem;
   display: grid;
   place-items: ${(props) =>
     (props.isLoading || props.noResults || props.isError) && "center"};
-
   grid-gap: 0.5rem;
   grid-template-columns: ${(props) =>
     !props.tableView &&
@@ -27,10 +25,10 @@ export const Table = styled.article`
   p.errorMsg {
     font-size: 2rem;
     text-align: center;
-    color: #a2a7c1;
+    color: var(--light-grey);
 
     span {
-      color: #698aff;
+      color: var(--primary-blue);
     }
   }
 
@@ -44,7 +42,7 @@ export const Table = styled.article`
     background-color: #fff;
 
     p {
-      color: #a2a7c1;
+      color: var(--light-grey);
 
       &:first-of-type {
         font-size: 1.8rem;
@@ -54,15 +52,16 @@ export const Table = styled.article`
         font-size: 1.4rem;
       }
     }
+
     button {
       padding: 0.5rem;
       outline: none;
       border: none;
-      border-radius: 4px;
+      border-radius: var(--border-radius);
       color: #fff;
       cursor: pointer;
       transition: 0.3s linear;
-      background-color: #698aff;
+      background-color: var(--primary-blue);
 
       &:active {
         transform: scale(0.85);
@@ -73,13 +72,13 @@ export const Table = styled.article`
   div:not(.error) {
     max-height: ${(props) => !props.tableView && "166px"};
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.15s linear;
+    transition: all 0.2s linear;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     p {
@@ -98,6 +97,9 @@ export const Table = styled.article`
     }
 
     &:hover {
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
     &:active {
@@ -109,6 +111,7 @@ export const Table = styled.article`
       top: 0.5rem;
       right: 0.5rem;
       font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
     }
   }
 `;
