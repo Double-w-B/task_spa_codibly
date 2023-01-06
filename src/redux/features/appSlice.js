@@ -16,7 +16,6 @@ const appSlice = createSlice({
   reducers: {
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
-      console.log(state.currentPage);
     },
     changeTableView: (state, action) => {
       state.tableView = action.payload;

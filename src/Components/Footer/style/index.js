@@ -7,9 +7,11 @@ const StyledFooter = styled.footer`
   place-items: center;
 
   p {
+    font-size: 0.7rem;
     color: var(--light-grey);
 
     a {
+      font-size: 1rem;
       color: var(--primary-blue);
     }
   }

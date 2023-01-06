@@ -115,10 +115,15 @@ export const Color = styled.div`
     p {
       &:first-of-type {
         font-size: 2.2rem;
+        margin-bottom: 0.2rem;
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 0.5px;
         color: #000;
+      }
+
+      &:nth-child(3) {
+        margin-top: 0.2rem;
       }
 
       &:last-of-type {
