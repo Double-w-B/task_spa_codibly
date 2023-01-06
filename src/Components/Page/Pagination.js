@@ -2,29 +2,41 @@ import React from "react";
 import StyledHomePage from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import * as appSlice from "../../redux/features/appSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const { colorsPages, isColorsLoading, isError } = useSelector(
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { currentPage, searchQuery } = useSelector((store) => store.app);
+  const { colorsPages, isColorsLoading, isHttpError } = useSelector(
     (store) => store.colors
   );
-  const { currentPage, searchQuery } = useSelector((store) => store.app);
+
   const [isLoading, setIsLoading] = React.useState(true);
 
   const handlePrevButton = () => {
-    if (currentPage === 1) return;
+    if (currentPage <= 1 || currentPage > colorsPages.length) return;
+    if (location.pathname.split("/").includes("colors")) return;
+
     dispatch(appSlice.setCurrentPage(currentPage - 1));
+    navigate(`/pages/${currentPage - 1}`);
   };
 
   const handleNextButton = () => {
-    if (currentPage === colorsPages.length) return;
+    if (currentPage >= colorsPages.length) return;
+    if (location.pathname.split("/").includes("colors")) return;
+
     dispatch(appSlice.setCurrentPage(currentPage + 1));
+    navigate(`/pages/${currentPage + 1}`);
   };
 
   const handlePageClick = (index) => {
     dispatch(appSlice.setSearchQuery(""));
     dispatch(appSlice.setCurrentPage(index + 1));
+    navigate(`/pages/${index + 1}`);
   };
 
   React.useEffect(() => {
@@ -35,7 +47,7 @@ const Pagination = () => {
     return () => clearTimeout(timer);
   }, [isColorsLoading]);
 
-  if (isLoading || isError) {
+  if (isLoading || isHttpError) {
     return <StyledHomePage.Pagination />;
   }
 

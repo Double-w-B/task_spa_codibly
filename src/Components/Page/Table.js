@@ -3,11 +3,11 @@ import StyledHomePage from "./style";
 import SingleColor from "./SingleColor";
 import { useSelector } from "react-redux";
 import spinner from "../../assets/loadingSpinner.gif";
-import serverError from "../../assets/server-error.png";
 
 const Table = () => {
-  const { colorsPages, isColorsLoading, colors, isError, httpErrorStatus } =
-    useSelector((store) => store.colors);
+  const { colorsPages, isColorsLoading, colors, isHttpError } = useSelector(
+    (store) => store.colors
+  );
   const { currentPage, tableView, searchQuery } = useSelector(
     (store) => store.app
   );
@@ -16,7 +16,7 @@ const Table = () => {
 
   const initialState = {
     isLoading,
-    isError,
+    isHttpError,
     tableView: isTableViewList,
   };
 
@@ -38,19 +38,6 @@ const Table = () => {
       return () => clearTimeout(timer);
     }
   }, [searchQuery]);
-
-  if (isError) {
-    return (
-      <StyledHomePage.Table {...initialState}>
-        <div className="error">
-          <img src={serverError} alt="" />
-          <p>{httpErrorStatus} Error</p>
-          <p>Try again or come back later</p>
-          <button onClick={() => window.location.reload()}>Try Again</button>
-        </div>
-      </StyledHomePage.Table>
-    );
-  }
 
   if (isLoading) {
     return (

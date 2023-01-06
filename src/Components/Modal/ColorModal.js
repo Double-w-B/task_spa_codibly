@@ -20,7 +20,7 @@ const ColorModal = () => {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setIsCopied(false);
-    }, 750);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [isCopied]);
 
@@ -28,6 +28,7 @@ const ColorModal = () => {
     dispatch(appSlice.setIsModal(false));
     dispatch(appSlice.setIsColorModal(false));
   };
+
   const handleHEXClick = () => {
     navigator.clipboard.writeText(color);
     setIsCopied(true);
@@ -45,7 +46,7 @@ const ColorModal = () => {
       <div className="modal__color">
         <p>{name}</p>
         <p onClick={handleHEXClick}>{color}</p>
-        <p>copied!</p>
+        <p>{isCopied ? "Copied!" : "Copy"}</p>
       </div>
 
       <div className="modal__data">

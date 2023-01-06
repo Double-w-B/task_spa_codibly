@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentPage: 1,
+  currentPage: "",
   tableView: "list",
   searchQuery: "",
   isModal: false,
   isColorModal: false,
+  isError: false,
   colorModalData: "",
 };
 
@@ -15,6 +16,7 @@ const appSlice = createSlice({
   reducers: {
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
+      console.log(state.currentPage);
     },
     changeTableView: (state, action) => {
       state.tableView = action.payload;
@@ -28,6 +30,9 @@ const appSlice = createSlice({
     setIsColorModal: (state, action) => {
       state.isColorModal = action.payload;
     },
+    setIsError: (state, action) => {
+      state.isError = action.payload;
+    },
     setColorModalData: (state, action) => {
       state.colorModalData = action.payload;
     },
@@ -40,6 +45,7 @@ export const {
   setSearchQuery,
   setIsModal,
   setIsColorModal,
+  setIsError,
   setColorModalData,
 } = appSlice.actions;
 

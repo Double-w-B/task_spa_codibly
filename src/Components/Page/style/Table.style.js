@@ -7,19 +7,19 @@ export const Table = styled.article`
   padding: 1rem 0.5rem;
   display: grid;
   place-items: ${(props) =>
-    (props.isLoading || props.noResults || props.isError) && "center"};
+    (props.isLoading || props.noResults || props.isHttpError) && "center"};
   grid-gap: 0.5rem;
   grid-template-columns: ${(props) =>
     !props.tableView &&
     !props.isLoading &&
     !props.noResults &&
-    !props.isError &&
+    !props.isHttpError &&
     "repeat(2, minmax(100px, 1fr))"};
   grid-template-rows: ${(props) =>
     props.tableView &&
     !props.isLoading &&
     !props.noResults &&
-    !props.isError &&
+    !props.isHttpError &&
     "repeat(5, minmax(96px, 1fr))"};
 
   p.errorMsg {
@@ -79,16 +79,20 @@ export const Table = styled.article`
     align-items: center;
     justify-content: center;
     transition: all 0.2s linear;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
     p {
       color: #505050;
+      transition: all 0.2s linear;
 
       &:first-child {
         font-size: 2rem;
         font-weight: bold;
         color: #fff;
         text-transform: capitalize;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
       }
 
       &:nth-child(2) {
@@ -98,8 +102,12 @@ export const Table = styled.article`
 
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        rgba(0, 0, 0, 0.6) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.35) 0px -3px 0px inset;
+
+      p:first-child {
+        text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.2);
+      }
     }
 
     &:active {

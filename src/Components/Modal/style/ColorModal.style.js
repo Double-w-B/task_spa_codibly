@@ -36,7 +36,7 @@ export const Color = styled.div`
         font-size: 1.6rem;
         color: var(--light-blue);
         cursor: pointer;
-        transition: 0.3s linear;
+        transition: 0.1s ease-in;
 
         &:active {
           transform: scale(0.8);
@@ -61,8 +61,10 @@ export const Color = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
     p {
       transition: 0.2s linear;
@@ -71,6 +73,8 @@ export const Color = styled.div`
         font-size: 2rem;
         text-transform: capitalize;
         color: #fff;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+        font-weight: bold;
       }
 
       &:nth-child(2) {
@@ -82,6 +86,11 @@ export const Color = styled.div`
 
         &:active {
           transform: scale(0.9);
+        }
+
+        &:hover + p {
+          opacity: ${(props) => !props.isCopied && "1"};
+          visibility: ${(props) => !props.isCopied && "visible"};
         }
       }
 

@@ -7,7 +7,10 @@ export const Search = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  box-shadow: ${(props) =>
+    !props.isLoading &&
+    !props.isHttpError &&
+    "rgba(0, 0, 0, 0.1) 0px 1px 2px 0px"};
   border-radius: 0 0 4px 4px;
 
   label {
@@ -28,6 +31,8 @@ export const Search = styled.div`
       border-radius: var(--border-radius);
       outline: none;
       color: var(--light-blue);
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.15) 0px 1px 3px -1px;
     }
   }
 
