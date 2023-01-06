@@ -1,8 +1,8 @@
 import React from "react";
-import StyledHomePage from "./style";
+import StyledColorsPage from "./style";
 import SingleColor from "./SingleColor";
 import { useSelector } from "react-redux";
-import spinner from "../../assets/loadingSpinner.gif";
+import spinner from "../../../assets/loadingSpinner.gif";
 
 const Table = () => {
   const { colorsPages, isColorsLoading, colors, isHttpError } = useSelector(
@@ -41,9 +41,9 @@ const Table = () => {
 
   if (isLoading) {
     return (
-      <StyledHomePage.Table {...initialState}>
-        <img src={spinner} alt="" />
-      </StyledHomePage.Table>
+      <StyledColorsPage.Table {...initialState}>
+        <img src={spinner} alt="" draggable={false} />
+      </StyledColorsPage.Table>
     );
   }
 
@@ -54,7 +54,7 @@ const Table = () => {
   const noResults = list.length === 0;
 
   return (
-    <StyledHomePage.Table {...initialState} noResults={noResults}>
+    <StyledColorsPage.Table {...initialState} noResults={noResults}>
       {noResults && (
         <p className="errorMsg">
           There is no color with ID: <br />
@@ -63,7 +63,7 @@ const Table = () => {
       )}
       {!noResults &&
         list.map((color, index) => <SingleColor key={index} {...color} />)}
-    </StyledHomePage.Table>
+    </StyledColorsPage.Table>
   );
 };
 

@@ -52,21 +52,6 @@ export const Table = styled.article`
         font-size: 1.4rem;
       }
     }
-
-    button {
-      padding: 0.5rem;
-      outline: none;
-      border: none;
-      border-radius: var(--border-radius);
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s linear;
-      background-color: var(--primary-blue);
-
-      &:active {
-        transform: scale(0.85);
-      }
-    }
   }
 
   div:not(.error) {
@@ -120,6 +105,22 @@ export const Table = styled.article`
       right: 0.5rem;
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    div:not(.error) p:first-child {
+      font-size: 1.8rem;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    div:not(.error) p:first-child {
+      font-size: 1.6rem;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    div:not(.error) p:first-child {
+      font-size: 1.45rem;
     }
   }
 `;

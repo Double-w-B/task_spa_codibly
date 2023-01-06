@@ -18,8 +18,13 @@ function App() {
         <Component.ColorModal />
       </Component.ModalOverlay>
       <Routes>
-        <Route exact path="/pages/:page" element={<Component.HomePage />} />
-        <Route exact path="/colors/:colorID" element={<Component.HomePage />} />
+        <Route exact path="/" element={<Component.HomePage />} />
+        <Route exact path="/pages/:page" element={<Component.ColorsPage />} />
+        <Route
+          exact
+          path="/colors/:colorID"
+          element={<Component.ColorsPage />}
+        />
         <Route path="*" element={<Component.Error />} />
       </Routes>
       <Component.Footer />

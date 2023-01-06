@@ -1,7 +1,7 @@
 import React from "react";
-import StyledHomePage from "./style";
+import StyledColorsPage from "./style";
 import { useDispatch } from "react-redux";
-import * as appSlice from "../../redux/features/appSlice";
+import * as appSlice from "../../../redux/features/appSlice";
 
 const SingleColor = (props) => {
   const { id, name, color, year } = props;
@@ -15,11 +15,11 @@ const SingleColor = (props) => {
   };
 
   return (
-    <StyledHomePage.SingleColor onClick={handleColorClick} color={color}>
+    <StyledColorsPage.SingleColor onClick={handleColorClick} color={color}>
       <p>{name}</p>
       <p>{year}</p>
       <p className="colorID">ID: {id}</p>
-    </StyledHomePage.SingleColor>
+    </StyledColorsPage.SingleColor>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import StyledHomePage from "./style";
+import StyledColorsPage from "./style";
 import { useDispatch, useSelector } from "react-redux";
-import * as appSlice from "../../redux/features/appSlice";
+import * as appSlice from "../../../redux/features/appSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 
@@ -48,11 +48,11 @@ const Pagination = () => {
   }, [isColorsLoading]);
 
   if (isLoading || isHttpError) {
-    return <StyledHomePage.Pagination />;
+    return <StyledColorsPage.Pagination />;
   }
 
   return (
-    <StyledHomePage.Pagination className="no-select">
+    <StyledColorsPage.Pagination className="no-select">
       <CiCircleChevLeft onClick={handlePrevButton} />
       <div className="pages">
         {colorsPages.map((page, index) => {
@@ -72,7 +72,7 @@ const Pagination = () => {
         })}
       </div>
       <CiCircleChevRight onClick={handleNextButton} />
-    </StyledHomePage.Pagination>
+    </StyledColorsPage.Pagination>
   );
 };
 

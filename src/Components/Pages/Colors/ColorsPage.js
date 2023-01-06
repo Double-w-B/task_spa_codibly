@@ -1,14 +1,14 @@
 import React from "react";
-import Error from "../Error/Error";
 import * as Component from "./index";
-import StyledHomePage from "./style";
+import Error from "../../Error/Error";
+import StyledColorsPage from "./style";
 import { useLocation } from "react-router-dom";
-import spinner from "../../assets/loadingSpinner.gif";
 import { useDispatch, useSelector } from "react-redux";
-import serverError from "../../assets/server-error.png";
-import * as appSlice from "../../redux/features/appSlice";
+import spinner from "../../../assets/loadingSpinner.gif";
+import httpError from "../../../assets/http-error.png";
+import * as appSlice from "../../../redux/features/appSlice";
 
-const Home = () => {
+const ColorsPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -23,6 +23,7 @@ const Home = () => {
   const page = isColorInRoute ? 1 : currentRoute.at(-1);
   const colorId = isColorInRoute ? currentRoute.at(-1) : "";
   const isPageNumber = /^[0-9]+$/.test(+page);
+  const isColorIdNumber = /^[0-9]+$/.test(+colorId);
 
   const initialState = {
     isLoading,
@@ -39,62 +40,71 @@ const Home = () => {
 
   React.useEffect(() => {
     if (isPageNumber) {
-      dispatch(appSlice.setSearchQuery(colorId));
+      isColorIdNumber && dispatch(appSlice.setSearchQuery(colorId));
       dispatch(appSlice.setCurrentPage(+page));
     } else {
       dispatch(appSlice.setIsError(true));
     }
     // eslint-disable-next-line
-  }, []);
+  }, [location.pathname]);
 
   React.useEffect(() => {
     if (!isLoading) {
       if (colorsPages.length > 0 && +page > colorsPages.length) {
         dispatch(appSlice.setIsError(true));
       }
+      if (!isColorIdNumber) dispatch(appSlice.setIsError(true));
     }
     // eslint-disable-next-line
   }, [isLoading]);
 
   if (isLoading) {
     <main>
-      <StyledHomePage>
+      <StyledColorsPage>
         <Component.Table>
-          <img src={spinner} alt="" />
+          <img src={spinner} alt="" draggable={false} />
         </Component.Table>
-      </StyledHomePage>
+      </StyledColorsPage>
     </main>;
   }
 
   if (isError) {
-    return <Error />;
+    return (
+      <main>
+        <Error />
+      </main>
+    );
   }
 
   if (isHttpError) {
     return (
-      <StyledHomePage>
-        <Component.Search />
-        <StyledHomePage.Table {...initialState}>
-          <div className="error">
-            <img src={serverError} alt="" />
-            <p>{httpErrorStatus} Error</p>
-            <p>Try again or come back later</p>
-            <button onClick={() => window.location.reload()}>Try Again</button>
-          </div>
-        </StyledHomePage.Table>
-      </StyledHomePage>
+      <main>
+        <StyledColorsPage>
+          <Component.Search />
+          <StyledColorsPage.Table {...initialState}>
+            <div className="error">
+              <img src={httpError} alt="" draggable={false} />
+              <p>{httpErrorStatus} Error</p>
+              <p>Try again or come back later</p>
+              <StyledColorsPage.Button onClick={() => window.location.reload()}>
+                Try Again
+              </StyledColorsPage.Button>
+            </div>
+          </StyledColorsPage.Table>
+        </StyledColorsPage>
+      </main>
     );
   }
 
   return (
     <main>
-      <StyledHomePage>
+      <StyledColorsPage>
         <Component.Search />
         <Component.Table />
         <Component.Pagination />
-      </StyledHomePage>
+      </StyledColorsPage>
     </main>
   );
 };
 
-export default Home;
+export default ColorsPage;

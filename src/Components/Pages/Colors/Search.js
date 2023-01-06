@@ -1,8 +1,8 @@
 import React from "react";
-import StyledHomePage from "./style";
+import StyledColorsPage from "./style";
 import { FaThList, FaTable } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import * as appSlice from "../../redux/features/appSlice";
+import * as appSlice from "../../../redux/features/appSlice";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
@@ -49,11 +49,11 @@ const Search = () => {
   };
 
   if (isLoading || isHttpError) {
-    return <StyledHomePage.Search {...initialState} />;
+    return <StyledColorsPage.Search {...initialState} />;
   }
 
   return (
-    <StyledHomePage.Search {...initialState}>
+    <StyledColorsPage.Search {...initialState}>
       <label htmlFor="search">
         Search by ID:
         <input
@@ -68,7 +68,7 @@ const Search = () => {
         |
         <FaTable onClick={() => dispatch(appSlice.changeTableView("table"))} />
       </div>
-    </StyledHomePage.Search>
+    </StyledColorsPage.Search>
   );
 };
 
