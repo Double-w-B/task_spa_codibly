@@ -6,9 +6,9 @@ export const Table = styled.article`
   border-radius: var(--border-radius);
   padding: 1rem 0.5rem;
   display: grid;
+  grid-gap: 0.5rem;
   place-items: ${(props) =>
     (props.isLoading || props.noResults || props.isHttpError) && "center"};
-  grid-gap: 0.5rem;
   grid-template-columns: ${(props) =>
     !props.tableView &&
     !props.isLoading &&

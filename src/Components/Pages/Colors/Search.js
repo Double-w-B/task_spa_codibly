@@ -34,14 +34,12 @@ const Search = () => {
 
   const handleInputChange = (e) => {
     if (/[^0-9.]/.test(e.target.value)) return;
-    // const value = e.target.value.replace(/[^0-9.]/g, "");
     const value = e.target.value;
 
     if (value) {
       dispatch(appSlice.setSearchQuery(value));
       navigate(`/colors/${value}`);
     } else {
-      console.log(currentPage);
       dispatch(appSlice.setSearchQuery(""));
 
       navigate(`/pages/${currentPage}`);

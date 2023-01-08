@@ -29,14 +29,13 @@ const Table = () => {
   }, [isColorsLoading]);
 
   React.useEffect(() => {
-    if (searchQuery) {
-      setIsLoading(true);
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
+    setIsLoading(true);
 
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, [searchQuery]);
 
   if (isLoading) {

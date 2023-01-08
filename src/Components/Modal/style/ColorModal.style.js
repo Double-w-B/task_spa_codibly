@@ -36,7 +36,11 @@ export const Color = styled.div`
         font-size: 1.6rem;
         color: var(--light-blue);
         cursor: pointer;
-        transition: 0.1s ease-in;
+        transition: 0.2s ease-in;
+
+        &:hover {
+          color: var(--primary-blue);
+        }
 
         &:active {
           transform: scale(0.8);
@@ -62,9 +66,12 @@ export const Color = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px 0px inset,
+      rgba(0, 0, 0, 0.1) 2px 0px 3px 0px inset,
+      rgba(0, 0, 0, 0.1) 0px -2px 3px 0px inset,
+      rgba(0, 0, 0, 0.1) -2px 0px 3px 0px inset,
+      rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
     p {
       transition: 0.2s linear;
